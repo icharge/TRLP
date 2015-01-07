@@ -1,0 +1,288 @@
+body {
+	padding-top: 80px;
+}
+
+tr.course {
+	cursor: pointer;
+}
+
+#content {
+	margin-top: 60px;
+}
+
+.navbar .label {
+	position: relative;
+	top: 11px;
+}
+
+.nav-list>li {
+	margin: 0px 5px;
+}
+
+.nav-list>li.nav-header {
+	font-weight: bold;
+}
+
+.nav-list>li>a {
+	padding: 5px 15px;
+	margin: 3px 0px;
+}
+
+.nav-list>li.active {
+	background-color: #3CC594;
+	border-radius: 4px;
+}
+
+.nav-list>li.active>a {
+	color: #fff;
+	background-color: #3CC594;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.nav-list>li>a:hover {
+	background-color: #3CC594;
+	color: #fff;
+}
+.nav-list > li > a, .nav-list > li > a:active {
+	border-radius: 4px;
+}
+
+.top-row {
+	text-align: center;
+	margin: 10px 0;
+}
+
+.top-row a div {
+	font-size: 10px;
+	line-height: 12px;
+}
+
+.anim.ng-enter {
+	transition: opacity 1s;
+	opacity: 0.0;
+}
+
+.anim.ng-enter-active {
+	opacity: 1.0;
+}
+.anim.ng-leave {
+	display: none;
+}
+
+#loading {
+	position: absolute;
+	width: 300px;
+	top: 10px;
+	left: 500px;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+	z-index: 1040;
+}
+
+/*
+ * Bootstrap centered columns
+ */
+.row-centered {
+	text-align:center;
+}
+.col-centered {
+	display:inline-block;
+	float:none;
+	/* reset the text-align */
+	text-align:left;
+	/* inline-block space fix */
+	margin-right:-4px;
+}
+
+
+/*
+ * Sidebar (ADMIN) ??
+ */
+.sidebar {
+	position: fixed;
+	top: 51px;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	display: block;
+	padding: 20px;
+	overflow-x: hidden;
+	overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+	border-right: 1px solid #0E0E0E;
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+	margin-right: -21px; /* 20px padding + 1px border */
+	margin-bottom: 20px;
+	margin-left: -20px;
+}
+.nav-sidebar > li > a {
+	padding-right: 20px;
+	padding-left: 20px;
+}
+.nav-sidebar > .active > a {
+	color: #fff;
+	background-color: #1c1e22; /*#428bca;*/
+}
+.nav-sidebar > .active > a:hover {
+	color: #fff;
+	background-color: #525357; /*#428bca;*/
+}
+
+/*
+ * Main content (Admin) ??
+ */
+.main {
+	padding-right: 40px;
+	padding-left: 40px;
+}
+.panel>.panel-heading>.panel-btn {
+	margin-top: -6px;
+}
+.panel>.panel-body.search {
+	padding: 4px 15px;
+}
+
+.recperpage {
+	margin-top: 4px;
+}
+
+input#searchtxt {
+	height: 31px;
+	padding: 2px 4px;
+}
+.searchform label {
+	margin-top: 5px;
+}
+
+.help-block {
+	margin-bottom: 0;
+}
+
+.table.rowclick > tbody > tr {
+	cursor: pointer;
+}
+
+/*
+ * Messenger BOX (Shadow)
+ */
+div.messenger-message {
+	box-shadow: #464646 0px 7px 34px;
+}
+
+/*
+ * Animation
+ */
+.animate-fade-up {
+	-webkit-animation: 0.35s fade-up-enter;
+	-moz-animation: 0.35s fade-up-enter;
+	-o-animation: 0.35s fade-up-enter;
+	animation: 0.35s fade-up-enter;
+}
+@-webkit-keyframes fade-up-enter {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(20px);
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+
+@-moz-keyframes fade-up-enter {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(20px);
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+
+@-o-keyframes fade-up-enter {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(20px);
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+
+@keyframes fade-up-enter {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(20px);
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+
+.animate-fade-down {
+	-webkit-animation: 0.35s fade-down-enter;
+	-moz-animation: 0.35s fade-down-enter;
+	-o-animation: 0.35s fade-down-enter;
+	animation: 0.35s fade-down-enter;
+}
+@-webkit-keyframes fade-down-enter {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(-20px);
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+
+@-moz-keyframes fade-down-enter {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(-20px);
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+
+@-o-keyframes fade-down-enter {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(-20px);
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+
+@keyframes fade-down-enter {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(-20px);
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+
+/*
+ * End Animation
+ */
+
