@@ -8,7 +8,7 @@
 					<span class="icon-bar"></span>
 				</button>
 <?php
-	echo anchor('main', 'Thai RA2 Lovers', 'class="navbar-brand"');
+	echo anchor('main', ' ', 'class="navbar-brand"');
 ?>
 			</div>
 			<div class="navbar-collapse collapse navbar-responsive-collapse">

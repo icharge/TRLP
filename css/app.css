@@ -10,6 +10,18 @@ tr.course {
 	margin-top: 60px;
 }
 
+.navbar-brand {
+	position: absolute;
+	display: block;
+	top: 0px;
+	background: url('../imgs/logo.png');
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 8rem;
+	width: 22rem;
+}
+
 .navbar .label {
 	position: relative;
 	top: 11px;
