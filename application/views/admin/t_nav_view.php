@@ -19,6 +19,7 @@
 						echo $this->misc->getRoleText($this->session->userdata('role')).
 						'&nbsp;&nbsp;'.(($this->session->userdata('prefix')!='')?'['.$this->session->userdata('prefix').'] ':'').$this->session->userdata('playername'); ?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
+							<li><?php echo anchor('member', 'Member Zone');?></li>
 							<li><?php echo anchor('main/viewprofile', 'ข้อมูลส่วนตัว');?></li>
 							<li class="divider"></li>
 							<li><?php echo anchor('auth/logout', 'ออกจากระบบ'); ?></li>

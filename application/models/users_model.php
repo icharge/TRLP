@@ -8,11 +8,11 @@ class Users_model extends CI_Model {
 
 	}
 
-	function checkUser($username, $password, $useapgar = true)
+	function checkUser($username, $password)
 	{
 		$cause = array(
 			'username' => $username,
-			'password' => ($useapgar ? $this->wol_apgar($password) : $password)
+			'password' => $this->Md5Pwd($password)
 			);
 		$query = $this->db
 			->limit(1)
@@ -24,6 +24,36 @@ class Users_model extends CI_Model {
 		} else {
 			return "notfound";
 		}
+	}
+
+	function checkUserName($username)
+	{
+		$cause['username'] = $username;
+		$query = $this->db
+			->limit(1)
+			->select('username')
+			->get_where('users', $cause);
+		return $query->num_rows() > 0;
+	}
+
+	function checkPlayerName($playername)
+	{
+		$cause['playername'] = $playername;
+		$query = $this->db
+			->limit(1)
+			->select('playername')
+			->get_where('users', $cause);
+		return $query->num_rows() > 0;
+	}
+
+	function checkPvpgnName($pvpgnname)
+	{
+		$cause['pvpgnname'] = $pvpgnname;
+		$query = $this->db
+			->limit(1)
+			->select('pvpgnname')
+			->get_where('users', $cause);
+		return $query->num_rows() > 0;
 	}
 
 	function wol_apgar($in)
@@ -39,6 +69,12 @@ class Users_model extends CI_Model {
 			$out[$i] = $lookup[(($left & 1) > 0 ? ($left << 1) & $right : $left ^ $right) & 63];
 		}
 		return implode($out);
+	}
+
+	function Md5Pwd($value)
+	{
+		$pass = $this->config->item('salt').$value;
+		return md5($pass);
 	}
 
 	function getUserInfo($username)
@@ -80,6 +116,12 @@ class Users_model extends CI_Model {
 		$cause = array('uid'=>$UID);
 		$result = $this->db->select('role')->get_where('users',$cause)->row_array();
 		return $result['role'];
+	}
+
+	function UpdateTimeStamp($uid)
+	{
+		$userData['lastaccess'] = date("Y-m-d H:i:s");
+		$query = $this->db->update('users', $userData, array('uid'=>$uid));
 	}
 
 	function _checkRole($allowedRole)

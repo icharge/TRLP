@@ -11,15 +11,17 @@
 			</div>
 			<div class="navbar-collapse collapse navbar-responsive-collapse">
 				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><?php echo anchor('member/play', 'เริ่มเล่น'); ?></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php 
 						echo $this->session->userdata('playername'); ?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
+							<li><?php echo anchor('member', 'ข้อมูลส่วนตัว'); ?></li>
+							<?php 
+								if (!$this->misc->YuriNetAgent()) {?>
 							<li class="divider"></li>
 							<li><?php echo anchor('auth/logout', 'ออกจากระบบ'); ?></li>
+							<?php } ?>
 						</ul>
 					</li>
 				</ul>				

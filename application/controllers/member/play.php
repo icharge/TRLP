@@ -27,7 +27,7 @@ class Play extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('member/t_header_view');
-		//$this->load->view('member/t_nav_view');
+		$this->load->view('member/t_nav_view');
 		$this->load->view('member/t_beginbody_view');
 		$this->load->view('member/t_sidebar_view');
 		$this->load->view('member/play_view');

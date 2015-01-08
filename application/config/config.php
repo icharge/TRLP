@@ -364,8 +364,8 @@ $config['proxy_ips'] = '';
 |
 */
 
-$config['salt'] = '';
-$config['vps_ip'] = '27.254.84.111';
+$config['salt'] = 'THAIRA2LOVERS_TRL';
+
 
 
 /* End of file config.php */

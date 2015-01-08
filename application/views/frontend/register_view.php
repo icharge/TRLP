@@ -33,7 +33,7 @@
 	echo form_open('auth/register', $attr);
 		?>
 		<div class="row">
-			<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 ">
+			<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 ">
 
 				<!-- Begin LoginInfo -->
 				<div class="panel panel-primary">
@@ -72,7 +72,7 @@
 									'name'=>'password',
 									'type'=>'password',
 									'class'=>'form-control',
-									'maxlength'=>'8',
+									'maxlength'=>'32',
 									'placeholder'=>'Password'));
 								echo form_error('password', '<span class="label label-danger">', '</span>');
 								?>
@@ -89,11 +89,11 @@
 									'name'=>'passwordconfirm',
 									'type'=>'password',
 									'class'=>'form-control',
-									'maxlength'=>'8',
+									'maxlength'=>'32',
 									'placeholder'=>'Confirm Password'));
 								echo form_error('passwordconfirm', '<span class="label label-danger">', '</span>');
 								?>
-								<span class="help-block">รหัสผ่านต้องมี 8 อักขระเท่านั้น และใช้สำหรับเล่นเกม</span>
+								<span class="help-block">รหัสผ่านต้องมี 4-32 อักขระ</span>
 							</div>
 						</div>
 					</div>
@@ -104,7 +104,7 @@
 
 		<!-- Begin UserInfo -->
 		<div class="row">
-			<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+			<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">
@@ -147,6 +147,7 @@
 									'type'=>'text',
 									'class'=>'form-control',
 									'placeholder'=>'Player Name'));
+								echo form_error('playername', '<span class="label label-danger">', '</span>');
 								?>
 							</div>
 						</div>

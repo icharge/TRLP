@@ -27,7 +27,7 @@ class Auth extends CI_Controller {
 	
 	public function loginyn($username, $password, $hdserial)
 	{
-		$check = $this->Users->checkuser($username, $password,false);
+		$check = $this->Users->checkuser($username, $password);
 		if ($check != "notfound") {
 			$userinfo = $this->Users->getUserInfo($username);
 			$data = array(
@@ -35,6 +35,7 @@ class Auth extends CI_Controller {
 				'name' => $userinfo['username'],
 				'email' => $userinfo['email'],
 				'playername' => $userinfo['playername'],
+				'passpvpgn' => $userinfo['passpvpgn'],
 				'prefix' => $userinfo['prefix'],
 				'hdserial' => $userinfo['hdserial'],
 				'prefer_country' => $userinfo['prefer_country'],
@@ -46,6 +47,7 @@ class Auth extends CI_Controller {
 				'logged' => true
 			);
 			$data['token'] = $this->Users->updateToken($data['uid']);
+			$this->Users->UpdateTimeStamp($userinfo['uid']);
 			$data['result'] = "success";
 			echo json_encode($data);
 		}
@@ -65,6 +67,7 @@ class Auth extends CI_Controller {
 				'username' => $userinfo['username'],
 				'email' => $userinfo['email'],
 				'playername' => $userinfo['playername'],
+				'passpvpgn' => $userinfo['passpvpgn'],
 				'prefix' => $userinfo['prefix'],
 				'hdserial' => $userinfo['hdserial'],
 				'prefer_country' => $userinfo['prefer_country'],
@@ -78,8 +81,8 @@ class Auth extends CI_Controller {
 			// Log data
 			$this->session->set_userdata($data);
 			$this->misc->doLog('Logged In');
-
-			redirect('member');
+			$this->Users->UpdateTimeStamp($userinfo['uid']);
+			redirect('member/play');
 		}
 		else
 		{
@@ -118,6 +121,7 @@ class Auth extends CI_Controller {
 							'username' => $userinfo['username'],
 							'email' => $userinfo['email'],
 							'playername' => $userinfo['playername'],
+							'passpvpgn' => $userinfo['passpvpgn'],
 							'prefix' => $userinfo['prefix'],
 							'hdserial' => $userinfo['hdserial'],
 							'prefer_country' => $userinfo['prefer_country'],
@@ -131,7 +135,7 @@ class Auth extends CI_Controller {
 						// Log data
 						$this->session->set_userdata($data);
 						$this->misc->doLog('Logged In');
-
+						$this->Users->UpdateTimeStamp($data['uid']);
 						redirect('admin');
 						break;
 
@@ -142,6 +146,7 @@ class Auth extends CI_Controller {
 							'username' => $userinfo['username'],
 							'email' => $userinfo['email'],
 							'playername' => $userinfo['playername'],
+							'passpvpgn' => $userinfo['passpvpgn'],
 							'prefix' => $userinfo['prefix'],
 							'hdserial' => $userinfo['hdserial'],
 							'prefer_country' => $userinfo['prefer_country'],
@@ -155,7 +160,7 @@ class Auth extends CI_Controller {
 						// Log data
 						$this->session->set_userdata($data);
 						$this->misc->doLog('Logged In');
-
+						$this->Users->UpdateTimeStamp($data['uid']);
 						redirect('member');
 						break;
 
@@ -199,29 +204,32 @@ class Auth extends CI_Controller {
 		if ($this->input->post('submit'))
 		{
 
-			$this->form_validation->set_rules('username', 'ชื่อผู้ใช้', 'trim|required');
-			$this->form_validation->set_rules('password', 'รหัสผ่าน', 'required|min_length[8]|max_length[8]');
-			$this->form_validation->set_rules('passwordconfirm', 'ยืนยันรหัสผ่าน', 'required|min_length[8]|max_length[8]');
+			$this->form_validation->set_rules('username', 'ชื่อผู้ใช้', 'trim|required|callback__username_check');
+			$this->form_validation->set_rules('password', 'รหัสผ่าน', 'required|min_length[4]|max_length[32]');
+			$this->form_validation->set_rules('passwordconfirm', 'ยืนยันรหัสผ่าน', 'required|min_length[4]|max_length[32]');
 			//$this->form_validation->set_rules('prefix', 'ชื่อ', 'trim|max_length[4]');
-			$this->form_validation->set_rules('playername', 'ชื่อผู้เล่น', 'trim|required');
+			$this->form_validation->set_rules('playername', 'ชื่อผู้เล่น', 'trim|required|callback__playername_check');
 			$this->form_validation->set_rules('prefer_country', 'ประเทศที่ชอบ', 'trim|required');
 			$this->form_validation->set_message('required', 'คุณต้องกรอก %s');
-			$this->form_validation->set_message('min_length', '%s จำเป็นต้องมีอักขระ 8 ตัว');
-			$this->form_validation->set_message('max_length', '%s จำเป็นต้องมีอักขระ 8 ตัว');
+			$this->form_validation->set_message('min_length', '%s อย่างน้อย 4 ตัว');
+			$this->form_validation->set_message('max_length', '%s ไม่เกิน 32 ตัว');
+			$this->form_validation->set_message('_username_check', '%sนี้ถูกใช้ไปแล้ว');
 			//$this->form_validation->set_error_delimiters('<span style="color: red">', '</span>');
 			if ($this->form_validation->run())
 			{
 				# Form check completed
 				$userData['username'] = $this->input->post('username');
-				$userData['password'] = $this->Users->wol_apgar($this->input->post('password'));
+				$userData['password'] = $this->Users->Md5Pwd($this->input->post('password'));
 				//$userData['prefix'] = $this->input->post('prefix');
 				$userData['playername'] = $this->input->post('playername');
+				$userData['passpvpgn'] = strtolower(substr($userData['password'], 0, 8));
 				$userData['prefer_country'] = $this->input->post('prefer_country');
+				$userData['cdkey'] = $this->input->post('cdkey');
 				$userData['status'] = $this->input->post('status');
 				$userData['role'] = "player";
-				$userData['status'] = "validating";
+				$userData['status'] = "active";
 				$userData['email'] = $this->input->post('email');
-				$userData['joindate'] = date("Y-m-d");
+				//$userData['joindate'] = date("Y-m-d");
 
 				if ($this->input->post('password') != $this->input->post('passwordconfirm'))
 				{
@@ -245,7 +253,7 @@ class Auth extends CI_Controller {
 							'มีบางอย่างผิดพลาด ไม่สามารถเพิ่ม '.$userData['username'].' ได้<br>'.$this->misc->getErrorDesc($result,'user'));
 						//$this->users();
 						$this->misc->doLog('Auth>Register:Added '.$userData['username'].' failed:'.$result);
-						redirect('auth/login');
+						$this->load->view('frontend/register_view', $data);
 					}
 				}
 			}
@@ -261,6 +269,21 @@ class Auth extends CI_Controller {
 			$this->load->view('frontend/register_view');
 		}
 		$this->load->view('frontend/t_footer_view');
+	}
+
+	function _username_check($str)
+	{
+		return !$this->Users->checkUserName($str);
+	}
+
+	function _playername_check($str)
+	{
+		return !$this->Users->checkPlayerName($str);
+	}
+
+	function _pvpplayername_check($str)
+	{
+		return !$this->Users->checkPvpgnName($str);
 	}
 
 }
