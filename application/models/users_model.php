@@ -56,6 +56,16 @@ class Users_model extends CI_Model {
 		return $query->num_rows() > 0;
 	}
 
+	function checkEmail($email)
+	{
+		$cause['email'] = $email;
+		$query = $this->db
+			->limit(1)
+			->select('email')
+			->get_where('users', $cause);
+		return $query->num_rows() > 0;
+	}
+
 	function wol_apgar($in)
 	{
 		$in = str_split($in);

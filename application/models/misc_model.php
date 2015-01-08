@@ -153,6 +153,18 @@ class Misc_model extends CI_Model {
 		return $this->startsWith(strtolower($this->input->user_agent()), 'yurinet');
 	}
 
+	function YuriNetLink($url)
+	{
+		if ($this->YuriNetAgent())
+		{
+			return $url;
+		}
+		else
+		{
+			return "javascript:alert('คุณต้องใช้งานจาก YuriNET เท่านั้น');";
+		}
+	}
+
 }
 
 /* End of file misc.php */

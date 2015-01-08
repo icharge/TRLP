@@ -122,7 +122,6 @@ class Auth extends CI_Controller {
 							'email' => $userinfo['email'],
 							'playername' => $userinfo['playername'],
 							'passpvpgn' => $userinfo['passpvpgn'],
-							'prefix' => $userinfo['prefix'],
 							'hdserial' => $userinfo['hdserial'],
 							'prefer_country' => $userinfo['prefer_country'],
 							'cdkey' => $userinfo['cdkey'],
@@ -147,7 +146,6 @@ class Auth extends CI_Controller {
 							'email' => $userinfo['email'],
 							'playername' => $userinfo['playername'],
 							'passpvpgn' => $userinfo['passpvpgn'],
-							'prefix' => $userinfo['prefix'],
 							'hdserial' => $userinfo['hdserial'],
 							'prefer_country' => $userinfo['prefer_country'],
 							'cdkey' => $userinfo['cdkey'],
@@ -210,10 +208,13 @@ class Auth extends CI_Controller {
 			//$this->form_validation->set_rules('prefix', 'ชื่อ', 'trim|max_length[4]');
 			$this->form_validation->set_rules('playername', 'ชื่อผู้เล่น', 'trim|required|callback__playername_check');
 			$this->form_validation->set_rules('prefer_country', 'ประเทศที่ชอบ', 'trim|required');
+			$this->form_validation->set_rules('email', 'Email', 'trim|valid_email|callback__email_check');
 			$this->form_validation->set_message('required', 'คุณต้องกรอก %s');
 			$this->form_validation->set_message('min_length', '%s อย่างน้อย 4 ตัว');
 			$this->form_validation->set_message('max_length', '%s ไม่เกิน 32 ตัว');
-			$this->form_validation->set_message('_username_check', '%sนี้ถูกใช้ไปแล้ว');
+			$this->form_validation->set_message('_username_check', '%s นี้ถูกใช้ไปแล้ว');
+			$this->form_validation->set_message('valid_email', 'รูปแบบของ %s ไม่ถูกต้อง');
+			$this->form_validation->set_message('_email_check', '%s นี้ถูกใช้ไปแล้ว');
 			//$this->form_validation->set_error_delimiters('<span style="color: red">', '</span>');
 			if ($this->form_validation->run())
 			{
@@ -229,7 +230,7 @@ class Auth extends CI_Controller {
 				$userData['role'] = "player";
 				$userData['status'] = "active";
 				$userData['email'] = $this->input->post('email');
-				//$userData['joindate'] = date("Y-m-d");
+				$userData['joindate'] = date("Y-m-d H:i:s");
 
 				if ($this->input->post('password') != $this->input->post('passwordconfirm'))
 				{
@@ -284,6 +285,11 @@ class Auth extends CI_Controller {
 	function _pvpplayername_check($str)
 	{
 		return !$this->Users->checkPvpgnName($str);
+	}
+
+	function _email_check($str)
+	{
+		return !$this->Users->checkEmail($str);
 	}
 
 }
