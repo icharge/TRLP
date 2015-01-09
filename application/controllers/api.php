@@ -5,6 +5,8 @@ class Api extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('users_model', 'Users');
+        $this->load->model('misc_model', 'misc');
     }
 
     public function index()
@@ -15,6 +17,11 @@ class Api extends CI_Controller {
     public function getServerIp()
     {
         echo "27.254.84.111";
+    }
+
+    public function getchcount($ch,$game) {
+        if ($game == "all") $game = NULL;
+        echo $this->Users->countOnline($ch,$game);
     }
 
 }

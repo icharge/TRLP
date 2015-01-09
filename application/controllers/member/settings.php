@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Play extends CI_Controller {
+class Settings extends CI_Controller {
 
 	public function __construct()
 	{
@@ -30,17 +30,13 @@ class Play extends CI_Controller {
 		$this->load->view('member/t_nav_view');
 		$this->load->view('member/t_beginbody_view');
 		$this->load->view('member/t_sidebar_view');
-
-		$data['ChList'] = $this->Users->P2PChannelList();
-
-		$this->load->view('member/play_view', $data);
-
-
+		$this->load->view('member/settings_view');
 		$this->load->view('member/t_footer_view');
-		$this->misc->doLog('Member:Play');
+		$this->misc->doLog('Settings:Index');
 	}
+
 
 }
 
-/* End of file play.php */
-/* Location: ./application/controllers/play.php */
+/* End of file settings.php */
+/* Location: ./application/controllers/member/settings.php */

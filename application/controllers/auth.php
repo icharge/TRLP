@@ -36,7 +36,6 @@ class Auth extends CI_Controller {
 				'email' => $userinfo['email'],
 				'playername' => $userinfo['playername'],
 				'passpvpgn' => $userinfo['passpvpgn'],
-				'prefix' => $userinfo['prefix'],
 				'hdserial' => $userinfo['hdserial'],
 				'prefer_country' => $userinfo['prefer_country'],
 				'cdkey' => $userinfo['cdkey'],
@@ -68,7 +67,6 @@ class Auth extends CI_Controller {
 				'email' => $userinfo['email'],
 				'playername' => $userinfo['playername'],
 				'passpvpgn' => $userinfo['passpvpgn'],
-				'prefix' => $userinfo['prefix'],
 				'hdserial' => $userinfo['hdserial'],
 				'prefer_country' => $userinfo['prefer_country'],
 				'cdkey' => $userinfo['cdkey'],
@@ -212,7 +210,8 @@ class Auth extends CI_Controller {
 			$this->form_validation->set_message('required', 'คุณต้องกรอก %s');
 			$this->form_validation->set_message('min_length', '%s อย่างน้อย 4 ตัว');
 			$this->form_validation->set_message('max_length', '%s ไม่เกิน 32 ตัว');
-			$this->form_validation->set_message('_username_check', '%s นี้ถูกใช้ไปแล้ว');
+			$this->form_validation->set_message('_username_check', '%sนี้ถูกใช้ไปแล้ว');
+			$this->form_validation->set_message('_playername_check', '%sนี้ถูกใช้ไปแล้ว');
 			$this->form_validation->set_message('valid_email', 'รูปแบบของ %s ไม่ถูกต้อง');
 			$this->form_validation->set_message('_email_check', '%s นี้ถูกใช้ไปแล้ว');
 			//$this->form_validation->set_error_delimiters('<span style="color: red">', '</span>');

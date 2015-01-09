@@ -203,6 +203,31 @@ class Users_model extends CI_Model {
 		$this->updateUser($data, $uid);
 		return $token;
 	}
+
+	function countOnline($ch, $game = NULL) {
+		/*select * from p2p_clients 
+		 where  ch_id= '$ch_id' and time_out >= '$time_now' and member_game='$game' 
+		 ORDER BY `ticket` ASC 
+		 */
+
+		$where = array(
+			'ch_id' => $ch,
+			'time_out >=' => time(),
+		);
+		if ($game !== NULL) $where['member_game'] = $game;
+		$query = $this->db
+			->select('member_user')
+			->get_where('p2p_clients', $where);
+		return $query->num_rows();
+	}
+
+	function P2PChannelList() {
+		$query = $this->db
+			->get('p2p_channel')
+			->result_array();
+		return $query;
+	}
+
 }
 
 /* End of file users_model.php */
