@@ -5,7 +5,7 @@
 	foreach ($ChList as $row) {
 		$link['btn'] = $this->misc->YuriNetLink('ynnet://play?mode=p2p&gamemode=normal&ch='.$row['ch_id']);
 		$countra2 = $this->Users->countOnline($row['ch_id'],"ra2");
-		$countyr = $this->Users->countOnline($row['ch_id'],"yr");
+		$countyr = $this->Users->countOnline($row['ch_id'],"yuri");
 		echo <<<html
 		<div class="row" style="padding-bottom: 10px">
 			<div class="col-xs-3"><a class="btn btn-default btn-block" href="$link[btn]">$row[ch_name]</a></div>

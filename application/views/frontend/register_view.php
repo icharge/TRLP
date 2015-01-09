@@ -146,6 +146,7 @@
 									'value'=>set_value('playername'),
 									'type'=>'text',
 									'class'=>'form-control',
+									'maxlength'=>'14',
 									'placeholder'=>'Player Name'));
 								echo form_error('playername', '<span class="label label-danger">', '</span>');
 								?>

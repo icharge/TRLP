@@ -204,12 +204,13 @@ class Auth extends CI_Controller {
 			$this->form_validation->set_rules('password', 'รหัสผ่าน', 'required|min_length[4]|max_length[32]');
 			$this->form_validation->set_rules('passwordconfirm', 'ยืนยันรหัสผ่าน', 'required|min_length[4]|max_length[32]');
 			//$this->form_validation->set_rules('prefix', 'ชื่อ', 'trim|max_length[4]');
-			$this->form_validation->set_rules('playername', 'ชื่อผู้เล่น', 'trim|required|callback__playername_check');
+			$this->form_validation->set_rules('playername', 'ชื่อผู้เล่น', 'trim|required|alpha|max_length[14]|callback__playername_check');
 			$this->form_validation->set_rules('prefer_country', 'ประเทศที่ชอบ', 'trim|required');
 			$this->form_validation->set_rules('email', 'Email', 'trim|valid_email|callback__email_check');
 			$this->form_validation->set_message('required', 'คุณต้องกรอก %s');
 			$this->form_validation->set_message('min_length', '%s อย่างน้อย 4 ตัว');
 			$this->form_validation->set_message('max_length', '%s ไม่เกิน 32 ตัว');
+			$this->form_validation->set_message('alpha', '%s เป็นอักษร A-z เท่านั้น');
 			$this->form_validation->set_message('_username_check', '%sนี้ถูกใช้ไปแล้ว');
 			$this->form_validation->set_message('_playername_check', '%sนี้ถูกใช้ไปแล้ว');
 			$this->form_validation->set_message('valid_email', 'รูปแบบของ %s ไม่ถูกต้อง');
@@ -247,6 +248,7 @@ class Auth extends CI_Controller {
 						$this->misc->doLog('Auth>Register:Added '.$userData['username'].' success');
 						//$this->users();
 						redirect('auth/login');
+
 					} else {
 						# Failed
 						$this->session->set_flashdata('msg_error',
