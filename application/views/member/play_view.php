@@ -8,8 +8,8 @@
 		$countyr = $this->Users->countOnline($row['ch_id'],"yuri");
 		echo <<<html
 		<div class="row" style="padding-bottom: 10px">
-			<div class="col-xs-3"><a class="btn btn-default btn-block" href="$link[btn]">$row[ch_name]</a></div>
-			<div class="col-xs-9">
+			<div class="col-xs-4"><a class="btn btn-default btn-block" href="$link[btn]">$row[ch_name]</a></div>
+			<div class="col-xs-8">
 				<div style="line-height: 3.6rem">
 					<span class="badge" id="ra2count">$countra2</span> RA2 | <span class="badge" id="yrcount">$countyr</span> YURI
 				</div>

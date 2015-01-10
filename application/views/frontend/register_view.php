@@ -59,6 +59,7 @@
 									'placeholder'=>'Username'));
 								echo form_error('username', '<span class="label label-danger">', '</span>');
 								?>
+								<p class="help-block">ไม่ควรมี เครื่องหมายหรืออักษรพิเศษ</p>
 							</div>
 						</div>
 						<div class="form-group<?php if(form_error('password')) echo ' has-error';?>">
@@ -150,6 +151,7 @@
 									'placeholder'=>'Player Name'));
 								echo form_error('playername', '<span class="label label-danger">', '</span>');
 								?>
+								<p class="help-block">ไม่ควรมี เครื่องหมายหรืออักษรพิเศษ</p>
 							</div>
 						</div>
 						<div class="form-group<?php if(form_error('prefer_country')) echo ' has-error';?>">
@@ -213,10 +215,10 @@
 									'value'=>set_value('cdkey'),
 									'type'=>'text',
 									'class'=>'form-control',
-									'placeholder'=>'1234567890123456789012'));
+									'placeholder'=>'ตัวเลข 22 หลัก'));
 								echo form_error('cdkey', '<span class="label label-danger">', '</span>');
 								?>
-								<span class="help-block">CD KEY เกม เพื่อไม่ให้ซ้ำกับใคร (ไม่จำเป็นต้องกรอก)</span>
+								<span class="help-block">CD KEY เกม เพื่อไม่ให้ซ้ำกับใคร (หากมีให้กรอก) </span>
 							</div>
 						</div>
 					</div>

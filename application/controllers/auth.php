@@ -25,8 +25,15 @@ class Auth extends CI_Controller {
 		$this->load->view('frontend/t_footer_view');
 	}
 	
-	public function loginyn($username, $password, $hdserial)
+	public function loginyn($username='', $password='', $hdserial='')
 	{
+		if ($this->input->post()) {
+			// New login POST
+			$username = $this->input->post('u');
+			$password = $this->input->post('p');
+			$hdserial = $this->input->post('hds');
+		}
+
 		$check = $this->Users->checkuser($username, $password);
 		if ($check != "notfound") {
 			$userinfo = $this->Users->getUserInfo($username);
