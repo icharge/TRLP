@@ -52,6 +52,9 @@ class Auth extends CI_Controller {
 				'joindate' => $userinfo['joindate'],
 				'logged' => true
 			);
+
+			$this->Users->updateUser(array('hdserial'=>$hdserial), $userinfo['uid']);
+
 			$data['token'] = $this->Users->updateToken($data['uid']);
 			$this->Users->UpdateTimeStamp($userinfo['uid']);
 			$data['result'] = "success";
@@ -85,7 +88,7 @@ class Auth extends CI_Controller {
 
 			// Log data
 			$this->session->set_userdata($data);
-			$this->misc->doLog('Logged In');
+			$this->misc->doLog('Logged In (YuriNET)');
 			$this->Users->UpdateTimeStamp($userinfo['uid']);
 			redirect('member/play');
 		}

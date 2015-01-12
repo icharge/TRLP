@@ -10,10 +10,12 @@
 				<dd><?=$this->session->userdata('username')?></dd>
 				<dt>ชื่อในเกม</dt>
 				<dd><?=$this->session->userdata('playername')?></dd>
-				<dt>รหัสผ่าน WOL</dt>
-				<dd><?=$this->session->userdata('passpvpgn')?></dd>
+				<dt>อีเมล์</dt>
+				<dd><?=$this->session->userdata('email')?></dd>
 				<dt>CDKEY/Serial</dt>
 				<dd><?=$this->session->userdata('cdkey')?></dd>
+				<dt>วันที่ลงทะเบียน</dt>
+				<dd><?=$this->session->userdata('joindate')?></dd>
 			</dl>
 		</div>
 		<div class="panel-footer text-right">

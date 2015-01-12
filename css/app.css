@@ -1,5 +1,11 @@
 body {
 	padding-top: 80px;
+		background-image: url('../imgs/bg.jpg');
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	color: #000;
 }
 
 tr.course {
@@ -121,6 +127,7 @@ tr.course {
 	overflow-x: hidden;
 	overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 	border-right: 1px solid #0E0E0E;
+	background-color: rgba(0, 0, 0, 0.38);
 }
 
 /* Sidebar navigation */
@@ -149,13 +156,24 @@ tr.course {
 	padding-right: 40px;
 	padding-left: 40px;
 }
+.jumbotron {
+	color: #fff;
+}
+.well {
+	color: #fff;
+}
+.panel-body {
+	color: #fff;
+}
 .panel>.panel-heading>.panel-btn {
 	margin-top: -6px;
 }
 .panel>.panel-body.search {
 	padding: 4px 15px;
 }
-
+.table {
+	color: #fff;
+}
 .recperpage {
 	margin-top: 4px;
 }
