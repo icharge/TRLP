@@ -1,8 +1,9 @@
-			</div>
 		</div>
 	</div>
 	<!-- End body -->
-
+	<div class="ggaddse">
+		
+	</div>
 	<!-- Begin Footer -->
 
 	<!--<script src="vendor/js/jquery.min.js"></script>-->

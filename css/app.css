@@ -16,6 +16,15 @@ tr.course {
 	margin-top: 60px;
 }
 
+.ggaddse {
+	display: block;
+	position: fixed;
+	bottom: 0;
+	min-width: 100%;
+	height: 100px;
+	left: 25%;
+}
+
 .navbar-brand {
 	position: absolute;
 	display: block;
