@@ -8,8 +8,8 @@
 
 	echo <<<html
 	<div class="row" style="padding-bottom: 10px">
-			<div class="col-xs-4"><a class="btn btn-default btn-block" href="$link[btn]"><img src="imgs/7net.png" alt="7NET Hosting" style="width: 38px;"> 7NET Hosting</a></div>
-			<div class="col-xs-8">
+			<div class="col-xs-5"><a class="btn btn-default btn-block" href="$link[btn]"><img src="imgs/7net.png" alt="7NET Hosting" style="width: 38px;"> 7NET Hosting</a></div>
+			<div class="col-xs-7">
 				<div style="padding: 18px 0;">
 					<span class="label bg-danger" style="font-size: 100%">7NET (Internet Café)</span> <span class="badge">Sponsored</span>
 				</div>
@@ -27,7 +27,7 @@ html;
 			<div class="col-xs-4"><a class="btn btn-default btn-block" href="$link[btn]">$row[ch_name]</a></div>
 			<div class="col-xs-8">
 				<div style="padding: 9px 0;">
-					<span class="badge" id="ra2count">$countra2</span> RA2 | <span class="badge" id="yrcount">$countyr</span> YURI
+					<span class="badge" id="ra2count">$countra2</span> <span class="label" style="font-size: 100%;background-color: #CF3103;">RA2</span> | <span class="badge" id="yrcount">$countyr</span> <span class="label" style="font-size: 100%;background-color: #4310A9;">YURI</span>
 				</div>
 			</div>
 		</div>
