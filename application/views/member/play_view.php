@@ -8,10 +8,10 @@
 
 	echo <<<html
 	<div class="row" style="padding-bottom: 10px">
-			<div class="col-xs-5"><a class="btn btn-default btn-block" href="$link[btn]"><img src="imgs/7net.png" alt="7NET Hosting" style="width: 38px;"> 7NET Hosting</a></div>
+			<div class="col-xs-5"><a class="btn btn-default btn-block" href="$link[btn]">NetCafé Hosting</a></div>
 			<div class="col-xs-7">
 				<div style="padding: 18px 0;">
-					<span class="label bg-danger" style="font-size: 100%">7NET (Internet Café)</span> <span class="badge">Sponsored</span>
+					<span class="label bg-danger" style="font-size: 100%">NetCafé Hosting (P2P เล่นไม่ได้ มาที่นี่)</span> <span class="badge">Sponsored</span>
 				</div>
 			</div>
 		</div>
