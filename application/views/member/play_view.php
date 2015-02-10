@@ -19,7 +19,7 @@ html;
 
 	echo '<h3>P2P</h3>';
 	foreach ($ChList as $row) {
-		$link['btn'] = $this->misc->YuriNetLink('ynnet://play?mode=p2p&gamemode=normal&ch='.$row['ch_id'].'&ip=0.0.0.0&port=0');
+		$link['btn'] = $this->misc->YuriNetLink('ynnet://play?mode=p2p&gamemode='.$row['ch_mode'].'&ch='.$row['ch_id'].'&ip=0.0.0.0&port=0');
 		$countra2 = $this->Users->countOnline($row['ch_id'],"ra2");
 		$countyr = $this->Users->countOnline($row['ch_id'],"yuri");
 		echo <<<html
